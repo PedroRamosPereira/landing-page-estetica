@@ -133,6 +133,11 @@
   }
 }
 
+/* O snap fica suspenso durante o arraste para o trilho acompanhar o ponteiro. */
+[data-dragging="true"] {
+  scroll-snap-type: none !important;
+}
+
 /* Label pequeno em caixa alta usado acima de alguns títulos. */
 @utility eyebrow {
   font-size: 12px;
