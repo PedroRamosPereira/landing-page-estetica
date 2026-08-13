@@ -12,3 +12,4 @@ next-env.d.ts
 
 # Export original do Claude Design (conteudo ja extraido em design_handoff_landing_clinica/)
 *.zip
+.env*

@@ -28,6 +28,13 @@ npm run build
 npm run start
 ```
 
+## Deploy
+
+Projeto Vercel `landing-page-estetica`, conectado a este repositório: push em
+`main` publica em produção, push em outra branch gera preview.
+
+Produção: https://landing-page-estetica-pedro-r-projects.vercel.app
+
 ## Adaptar para outra clínica
 
 Editar apenas `config/clinica.ts`: nome, wordmark, telefone e mensagem do
