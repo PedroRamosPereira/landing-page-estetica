@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  /* Tipografia -------------------------------------------------------- */
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  /* Superfícies ------------------------------------------------------- */
+  --color-cream: #faf8f6;
+  --color-cream-alt: #f3ede7;
+  --color-cream-deep: #f5efe9;
+
+  /* Texto ------------------------------------------------------------- */
+  --color-ink: #211c19;
+  --color-muted: #6d635c;
+  --color-muted-deep: #5d544d;
+  /* O design entregou #8a8078, que dá 3.7:1 sobre o creme. Escurecido para
+     passar em WCAG AA (5.1:1) mantendo a hierarquia mais leve. */
+  --color-faint: #756b63;
+  --color-dark-muted: #c8bfb7;
+
+  /* Accent único da página: dourado.
+     Um só accent, três papéis fixos, definidos por contraste:
+       gold       elemento gráfico sobre creme (ícones, traços)  3.3:1
+       gold-dark  preenchimento de botão com texto branco        4.8:1
+       gold-deep  texto pequeno sobre creme                      5.2:1
+       gold-light accent sobre a seção escura                    6.8:1
+     O #a9865b do design falha AA como texto (3.2:1), por isso não é usado
+     em nenhuma palavra da página, só em traço e ícone.                    */
+  --color-gold: #a9865b;
+  --color-gold-dark: #8d6d47;
+  --color-gold-deep: #7d6440;
+  --color-gold-light: #c0a077;
+
+  /* Linhas ------------------------------------------------------------ */
+  --color-line: #e8e0d8;
+  --color-line-soft: #ece4db;
+  --color-line-mid: #e5dcd2;
+  --color-line-strong: #d6cabc;
+
+  /* Tons de placeholder de imagem ------------------------------------- */
+  --color-blush: #fce7f3;
+  --color-blush-deep: #f8dcec;
+  --color-rose: #b06a90;
+  --color-stone: #e6dfd6;
+  --color-stone-deep: #ddd4c9;
+
+  /* WhatsApp. O verde de marca (#25d366) dá 2.0:1 com texto branco, então
+     o botão usa um verde mais fechado da mesma família: mantém a leitura
+     "botão de WhatsApp" e passa AA (5.2:1).                              */
+  --color-whats: #0f7d3f;
+  --color-whats-dark: #0b6633;
+
+  /* Forma: dois raios apenas. Pill para interativo, 3px para superfície */
+  --radius-surface: 3px;
+
+  /* Breakpoint do menu, definido no design em 900px */
+  --breakpoint-nav: 900px;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    /* Compensa o header sticky ao pular para as âncoras. */
+    scroll-padding-top: 96px;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-wrap: pretty;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-blush);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+/* Entrada de seções. Ver components/Reveal.tsx: o estado escondido só existe
+   dentro deste media query, então o padrão do documento é conteúdo visível. */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-load {
+    animation: reveal-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--reveal-delay, 0s);
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover var(--reveal-end, 26%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Label pequeno em caixa alta usado acima de alguns títulos. */
+@utility eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold-deep);
+}

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: #faf8f6; color: #211c19; font-family: 'Jost', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  a { color: #a9865b; text-decoration: none; }
+  a:hover { color: #7d6440; }
+  summary { list-style: none; }
+  ::selection { background: #fce7f3; }
+  @keyframes floatUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<div style="max-width:2200px;margin:0 auto;overflow-x:clip;">
+
+  <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(250,248,246,.82);border-bottom:1px solid #e8e0d8;">
+    <div style="width:100%;max-width:1280px;margin:0 auto;padding:14px clamp(18px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+      <div style="width:132px;height:42px;background:#fce7f3;display:grid;place-items:center;border-radius:2px;flex:0 0 auto;">
+        <span style="font-family:ui-monospace,SFMono-Regular,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#b06a90;">logo</span>
+      </div>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:clamp(14px,2.4vw,32px);font-size:14px;letter-spacing:.06em;color:#6d635c;">
+          <a href="#procedimentos" style="color:#6d635c;white-space:nowrap;">Procedimentos</a>
+          <a href="#sobre" style="color:#6d635c;white-space:nowrap;">Sobre</a>
+          <a href="#resultados" style="color:#6d635c;white-space:nowrap;">Resultados</a>
+          <a href="#duvidas" style="color:#6d635c;white-space:nowrap;">Dúvidas</a>
+        </nav>
+        <a href="#agendar" style="flex:0 0 auto;background:#211c19;color:#faf8f6;padding:12px 22px;border-radius:999px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;transition:background .35s ease,color .35s ease;" style-hover="background:#a9865b;color:#fff;">Agendar avaliação</a>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="Abrir menu" aria-expanded="{{ menuOpen }}" style="flex:0 0 auto;width:48px;height:48px;display:grid;place-items:center;gap:0;background:none;border:1px solid #e8e0d8;border-radius:999px;cursor:pointer;padding:0;">
+          <span style="display:grid;gap:5px;">
+            <span style="display:block;width:18px;height:1px;background:#211c19;"></span>
+            <span style="display:block;width:18px;height:1px;background:#211c19;"></span>
+            <span style="display:block;width:18px;height:1px;background:#211c19;"></span>
+          </span>
+        </button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav style="border-top:1px solid #e8e0d8;padding:8px 18px 20px;display:grid;gap:2px;font-size:16px;letter-spacing:.04em;">
+        <a href="#procedimentos" onClick="{{ closeMenu }}" style="color:#6d635c;padding:14px 2px;border-bottom:1px solid #efe8e1;">Procedimentos</a>
+        <a href="#sobre" onClick="{{ closeMenu }}" style="color:#6d635c;padding:14px 2px;border-bottom:1px solid #efe8e1;">Sobre</a>
+        <a href="#resultados" onClick="{{ closeMenu }}" style="color:#6d635c;padding:14px 2px;border-bottom:1px solid #efe8e1;">Resultados</a>
+        <a href="#duvidas" onClick="{{ closeMenu }}" style="color:#6d635c;padding:14px 2px;border-bottom:1px solid #efe8e1;">Dúvidas</a>
+        <a href="#agendar" onClick="{{ closeMenu }}" style="margin-top:14px;text-align:center;background:#211c19;color:#faf8f6;padding:16px 22px;border-radius:999px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;">Agendar avaliação</a>
+      </nav>
+    </sc-if>
+  </header>
+
+  <section style="position:relative;padding:clamp(56px,9vw,120px) clamp(18px,5vw,48px) clamp(56px,8vw,110px);background:linear-gradient(180deg,#faf8f6 0%,#f5efe9 100%);">
+    <div style="width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,5vw,72px);align-items:center;">
+      <div style="animation:floatUp .8s ease both;">
+        <p style="margin:0 0 20px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#a9865b;">Harmonização facial &amp; estética avançada</p>
+        <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(40px,6.4vw,76px);line-height:1.04;letter-spacing:-.01em;">Sua beleza natural, revelada com precisão médica.</h1>
+        <p style="margin:26px 0 0;max-width:52ch;font-size:clamp(15px,1.5vw,18px);line-height:1.75;font-weight:300;color:#6d635c;">Protocolos individualizados de harmonização e rejuvenescimento, conduzidos com técnica, segurança e um olhar estético que respeita a sua identidade.</p>
+        <div style="margin-top:38px;display:flex;flex-wrap:wrap;gap:14px;">
+          <a href="#agendar" style="background:#a9865b;color:#fff;padding:17px 34px;border-radius:999px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;transition:background .35s ease;" style-hover="background:#8d6d47;">Agendar minha avaliação</a>
+          <a href="#procedimentos" style="border:1px solid #d6cabc;color:#211c19;padding:17px 34px;border-radius:999px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;transition:border-color .35s ease,color .35s ease;" style-hover="border-color:#a9865b;color:#a9865b;">Ver procedimentos</a>
+        </div>
+        <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,48px);border-top:1px solid #e5dcd2;padding-top:26px;">
+          <div><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;">+12</p><p style="margin:4px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a8078;">anos de atuação</p></div>
+          <div><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;">+4.000</p><p style="margin:4px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a8078;">procedimentos</p></div>
+          <div><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;">5.0</p><p style="margin:4px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a8078;">avaliação pacientes</p></div>
+        </div>
+      </div>
+      <div style="position:relative;animation:floatUp 1s .1s ease both;">
+        <div style="width:100%;aspect-ratio:4/5;max-height:640px;background:repeating-linear-gradient(135deg,#fce7f3 0 14px,#f8dcec 14px 28px);border-radius:3px;display:grid;place-items:center;box-shadow:0 30px 70px -40px rgba(33,28,25,.5);">
+          <span style="font-family:ui-monospace,SFMono-Regular,monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#b06a90;">imagem PRINCIPAL<br></span>
+        </div>
+        <div style="position:absolute;left:0;bottom:0;transform:translate(clamp(-24px,-2vw,0px),clamp(0px,2vw,24px));background:#faf8f6;border:1px solid #e8e0d8;padding:16px 20px;border-radius:2px;max-width:min(240px,72%);">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;line-height:1.3;">Avaliação facial completa</p>
+          <p style="margin:6px 0 0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#a9865b;">Sem compromisso</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="procedimentos" style="padding:clamp(64px,9vw,132px) clamp(18px,5vw,48px);">
+    <div style="width:100%;max-width:1280px;margin:0 auto;">
+      <div style="max-width:640px;">
+        <p style="margin:0 0 16px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#a9865b;">Procedimentos</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.4vw,54px);line-height:1.12;">Tratamentos desenhados para o seu rosto</h2>
+        <p style="margin:20px 0 0;font-size:16px;line-height:1.75;font-weight:300;color:#6d635c;">Cada protocolo é definido após avaliação presencial, considerando anatomia, expressão e objetivos estéticos.</p>
+      </div>
+      <div style="margin-top:clamp(36px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:clamp(16px,2vw,28px);">
+        <article style="background:#fff;border:1px solid #ece4db;padding:clamp(24px,3vw,36px);border-radius:3px;transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -36px rgba(33,28,25,.45);border-color:#dfd2c3;">
+          <div style="width:48px;height:48px;background:#fce7f3;border-radius:50%;display:grid;place-items:center;"><div style="width:14px;height:14px;border:1px solid #b06a90;border-radius:50%;"></div></div>
+          <h3 style="margin:24px 0 0;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;">Toxina Botulínica</h3>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.7;font-weight:300;color:#6d635c;">Suavização de linhas de expressão preservando a naturalidade dos movimentos.</p>
+        </article>
+        <article style="background:#fff;border:1px solid #ece4db;padding:clamp(24px,3vw,36px);border-radius:3px;transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -36px rgba(33,28,25,.45);border-color:#dfd2c3;">
+          <div style="width:48px;height:48px;background:#fce7f3;border-radius:50%;display:grid;place-items:center;"><div style="width:14px;height:14px;border:1px solid #b06a90;"></div></div>
+          <h3 style="margin:24px 0 0;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;">Preenchimentos</h3>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.7;font-weight:300;color:#6d635c;">Ácido hialurônico para contorno, volume e projeção em pontos estratégicos da face.</p>
+        </article>
+        <article style="background:#fff;border:1px solid #ece4db;padding:clamp(24px,3vw,36px);border-radius:3px;transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -36px rgba(33,28,25,.45);border-color:#dfd2c3;">
+          <div style="width:48px;height:48px;background:#fce7f3;border-radius:50%;display:grid;place-items:center;"><div style="width:14px;height:14px;border:1px solid #b06a90;transform:rotate(45deg);"></div></div>
+          <h3 style="margin:24px 0 0;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;">Bioestimuladores</h3>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.7;font-weight:300;color:#6d635c;">Estímulo de colágeno para firmeza e qualidade de pele com resultado progressivo.</p>
+        </article>
+        <article style="background:#fff;border:1px solid #ece4db;padding:clamp(24px,3vw,36px);border-radius:3px;transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -36px rgba(33,28,25,.45);border-color:#dfd2c3;">
+          <div style="width:48px;height:48px;background:#fce7f3;border-radius:50%;display:grid;place-items:center;"><div style="width:18px;height:2px;background:#b06a90;"></div></div>
+          <h3 style="margin:24px 0 0;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;">Skinbooster</h3>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.7;font-weight:300;color:#6d635c;">Hidratação profunda e viço para peles desidratadas ou com sinais iniciais de idade.</p>
+        </article>
+        <article style="background:#fff;border:1px solid #ece4db;padding:clamp(24px,3vw,36px);border-radius:3px;transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -36px rgba(33,28,25,.45);border-color:#dfd2c3;">
+          <div style="width:48px;height:48px;background:#fce7f3;border-radius:50%;display:grid;place-items:center;"><div style="width:16px;height:16px;border-left:1px solid #b06a90;border-bottom:1px solid #b06a90;"></div></div>
+          <h3 style="margin:24px 0 0;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;">Fios de sustentação</h3>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.7;font-weight:300;color:#6d635c;">Reposicionamento suave dos tecidos para redefinir o contorno facial.</p>
+        </article>
+        <article style="background:#fff;border:1px solid #ece4db;padding:clamp(24px,3vw,36px);border-radius:3px;transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 28px 50px -36px rgba(33,28,25,.45);border-color:#dfd2c3;">
+          <div style="width:48px;height:48px;background:#fce7f3;border-radius:50%;display:grid;place-items:center;"><div style="width:16px;height:16px;border:1px solid #b06a90;border-radius:50% 50% 50% 0;"></div></div>
+          <h3 style="margin:24px 0 0;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;">Protocolos de pele</h3>
+          <p style="margin:12px 0 0;font-size:15px;line-height:1.7;font-weight:300;color:#6d635c;">Peelings, lasers e microagulhamento para textura, manchas e cicatrizes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" style="background:#f3ede7;padding:clamp(64px,9vw,132px) clamp(18px,5vw,48px);">
+    <div style="width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,5vw,80px);align-items:center;">
+      <div style="position:relative;">
+        <div style="width:100%;aspect-ratio:3/4;max-height:620px;background:repeating-linear-gradient(135deg,#fce7f3 0 14px,#f8dcec 14px 28px);border-radius:3px;display:grid;place-items:center;">
+          <span style="font-family:ui-monospace,SFMono-Regular,monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#b06a90;">foto perfil</span>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 16px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#a9865b;">Sobre a clínica</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.4vw,54px);line-height:1.12;">Técnica apurada, olhar estético e escuta atenta</h2>
+        <p style="margin:24px 0 0;font-size:16px;line-height:1.8;font-weight:300;color:#5d544d;">Mini-biografia da profissional: formação, especializações, filosofia de trabalho e a forma como conduz cada atendimento. Este espaço recebe o texto institucional definido no briefing.</p>
+        <ul style="margin:30px 0 0;padding:0;list-style:none;display:grid;gap:14px;">
+          <li style="display:flex;gap:12px;align-items:flex-start;font-size:15px;font-weight:300;color:#5d544d;"><span style="width:6px;height:6px;border-radius:50%;background:#a9865b;margin-top:8px;flex:0 0 auto;"></span>Avaliação individualizada com plano de tratamento por etapas</li>
+          <li style="display:flex;gap:12px;align-items:flex-start;font-size:15px;font-weight:300;color:#5d544d;"><span style="width:6px;height:6px;border-radius:50%;background:#a9865b;margin-top:8px;flex:0 0 auto;"></span>Produtos registrados e protocolos com respaldo científico</li>
+          <li style="display:flex;gap:12px;align-items:flex-start;font-size:15px;font-weight:300;color:#5d544d;"><span style="width:6px;height:6px;border-radius:50%;background:#a9865b;margin-top:8px;flex:0 0 auto;"></span>Acompanhamento de retorno incluído em todos os procedimentos</li>
+        </ul>
+        <p style="margin:32px 0 0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8a8078;">Registro profissional · CRM/CRO 00000</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="resultados" style="padding:clamp(64px,9vw,132px) clamp(18px,5vw,48px);">
+    <div style="width:100%;max-width:1080px;margin:0 auto;">
+      <div style="max-width:620px;">
+        <p style="margin:0 0 16px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#a9865b;">Resultados</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.4vw,54px);line-height:1.12;">Arraste e veja a transformação</h2>
+        <p style="margin:20px 0 0;font-size:16px;line-height:1.75;font-weight:300;color:#6d635c;">Registros reais, mesma iluminação e mesmo enquadramento. Resultados variam conforme indicação e resposta individual.</p>
+      </div>
+
+      <div ref="{{ baRef }}" onPointerDown="{{ onDown }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerCancel="{{ onUp }}" style="margin-top:clamp(32px,4vw,56px);position:relative;width:100%;aspect-ratio:16/11;max-height:660px;border-radius:3px;overflow:hidden;touch-action:pan-y;cursor:ew-resize;user-select:none;box-shadow:0 34px 70px -50px rgba(33,28,25,.6);">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#e6dfd6 0 16px,#ddd4c9 16px 32px);display:grid;place-items:center;">
+          <span style="font-family:ui-monospace,SFMono-Regular,monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8a8078;">foto depois</span>
+        </div>
+        <div style="position:absolute;inset:0;clip-path: inset(0 {{ clipRight }} 0 0);background:repeating-linear-gradient(135deg,#fce7f3 0 16px,#f6d6e8 16px 32px);display:grid;place-items:center;">
+          <span style="font-family:ui-monospace,SFMono-Regular,monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#b06a90;">foto antes</span>
+        </div>
+        <span style="position:absolute;top:18px;left:18px;background:rgba(250,248,246,.9);padding:7px 14px;border-radius:999px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#211c19;">Antes</span>
+        <span style="position:absolute;top:18px;right:18px;background:rgba(33,28,25,.82);color:#faf8f6;padding:7px 14px;border-radius:999px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;">Depois</span>
+        <div style="position:absolute;top:0;bottom:0;left:{{ posStr }};width:2px;background:#faf8f6;transform:translateX(-1px);box-shadow:0 0 18px rgba(0,0,0,.25);"></div>
+        <button type="button" onKeyDown="{{ onKey }}" aria-label="Arraste para comparar antes e depois" style="position:absolute;top:50%;left:{{ posStr }};transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;border:1px solid #e8e0d8;background:#faf8f6;display:grid;place-items:center;cursor:ew-resize;box-shadow:0 10px 26px -12px rgba(33,28,25,.6);">
+          <span style="display:flex;align-items:center;gap:8px;">
+            <span style="width:8px;height:8px;border-left:1.5px solid #a9865b;border-bottom:1.5px solid #a9865b;transform:rotate(45deg);"></span>
+            <span style="width:8px;height:8px;border-right:1.5px solid #a9865b;border-top:1.5px solid #a9865b;transform:rotate(45deg);"></span>
+          </span>
+        </button>
+      </div>
+      <p style="margin:18px 0 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#8a8078;text-align:center;">Deslize a barra · resultado após sessão única</p>
+    </div>
+  </section>
+
+  <section style="background:#f3ede7;padding:clamp(64px,9vw,120px) 0;overflow:hidden;">
+    <div style="width:100%;max-width:1280px;margin:0 auto;padding:0 clamp(18px,5vw,48px);">
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;">
+        <div style="max-width:560px;">
+          <p style="margin:0 0 16px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#a9865b;">Bastidores</p>
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.4vw,54px);line-height:1.12;">O dia a dia da clínica no Instagram</h2>
+        </div>
+        <a href="#" style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid #d6cabc;padding-bottom:6px;">@perfil.da.clinica</a>
+      </div>
+    </div>
+    <div ref="{{ gridRef }}" style="margin-top:clamp(28px,4vw,48px);width:100%;max-width:1280px;margin-left:auto;margin-right:auto;padding:14px clamp(18px,5vw,48px) 22px;display:flex;gap:clamp(14px,2vw,26px);align-items:stretch;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;">
+      <sc-for list="{{ posts }}" as="post" hint-placeholder-count="4">
+      <figure style="flex:1 1 0;min-width:min(74%,260px);scroll-snap-align:start;margin:0;background:#fff;border:1px solid #e8e0d8;border-radius:22px;overflow:hidden;box-shadow:0 14px 30px -24px rgba(33,28,25,.5);transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;position:relative;z-index:1;" style-hover="transform:translateY(-8px) scale(1.03);z-index:20;box-shadow:0 34px 60px -30px rgba(33,28,25,.5);">
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;">
+          <span style="width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#f8dcec,#e3c3a5);border:1px solid #efe6dc;flex:0 0 auto;"></span>
+          <span style="font-size:12px;letter-spacing:.08em;color:#211c19;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">perfil.da.clinica</span>
+        </div>
+        <div style="width:100%;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#fce7f3 0 12px,#f8dcec 12px 24px);display:grid;place-items:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b06a90;text-align:center;padding:0 12px;">{{ post.ph }}</span></div>
+        <div style="padding:12px 14px 16px;display:grid;gap:6px;">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span style="width:11px;height:11px;border:1.5px solid #211c19;border-radius:2px 11px 11px 2px;transform:rotate(-45deg);flex:0 0 auto;"></span>
+            <span style="width:12px;height:11px;border:1.5px solid #211c19;border-radius:6px;flex:0 0 auto;"></span>
+            <span style="margin-left:auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a8078;white-space:nowrap;">{{ post.likes }}</span>
+          </div>
+          <figcaption style="font-size:13px;font-weight:300;color:#5c554e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ post.cap }}</figcaption>
+        </div>
+      </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="duvidas" style="padding:clamp(64px,9vw,132px) clamp(18px,5vw,48px);">
+    <div style="width:100%;max-width:960px;margin:0 auto;">
+      <p style="margin:0 0 16px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#a9865b;">Dúvidas frequentes</p>
+      <h2 style="margin:0 0 clamp(28px,4vw,48px);font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.4vw,54px);line-height:1.12;">Antes de agendar</h2>
+      <div style="display:grid;gap:0;border-top:1px solid #e5dcd2;">
+        <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid #e5dcd2;">
+            <button type="button" onClick="{{ item.toggle }}" style="width:100%;background:none;border:none;padding:clamp(20px,2.6vw,28px) 0;display:flex;gap:20px;align-items:center;justify-content:space-between;cursor:pointer;text-align:left;font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.2vw,25px);font-weight:400;color:#211c19;" style-hover="color:#a9865b;">
+              <span>{{ item.q }}</span>
+              <span style="flex:0 0 auto;width:26px;height:26px;position:relative;">
+                <span style="position:absolute;top:12px;left:4px;width:18px;height:1px;background:#a9865b;"></span>
+                <span style="position:absolute;top:12px;left:4px;width:18px;height:1px;background:#a9865b;transform:rotate({{ item.rot }});transition:transform .35s ease;"></span>
+              </span>
+            </button>
+            <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;padding:0 0 clamp(22px,2.6vw,30px);max-width:70ch;font-size:15px;line-height:1.8;font-weight:300;color:#6d635c;">{{ item.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="agendar" style="background:#211c19;color:#faf8f6;padding:clamp(64px,9vw,132px) clamp(18px,5vw,48px);">
+    <div style="width:100%;max-width:820px;margin:0 auto;text-align:center;">
+      <p style="margin:0 0 18px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#c0a077;">Agende sua avaliação</p>
+      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,5.2vw,62px);line-height:1.1;">O primeiro passo é uma conversa</h2>
+      <p style="margin:22px auto 0;max-width:56ch;font-size:16px;line-height:1.8;font-weight:300;color:#c8bfb7;">Na avaliação analisamos proporções faciais, histórico e expectativas para desenhar um plano realista&nbsp;sem compromisso de realizar procedimentos no mesmo dia.</p>
+      <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <a href="{{ waLink }}" target="_blank" rel="noopener" style="background:#a9865b;color:#fff;padding:18px 38px;border-radius:999px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;transition:background .35s ease;" style-hover="background:#c0a077;">Falar no WhatsApp</a>
+        <a href="#" style="border:1px solid rgba(250,248,246,.28);color:#faf8f6;padding:18px 38px;border-radius:999px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;transition:border-color .35s ease,color .35s ease;" style-hover="border-color:#c0a077;color:#c0a077;">Ver localização</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#faf8f6;padding:clamp(48px,6vw,80px) clamp(18px,5vw,48px) 104px;">
+    <div style="width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(28px,4vw,56px);">
+      <div>
+        <div style="width:132px;height:42px;background:#fce7f3;display:grid;place-items:center;border-radius:2px;"><span style="font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#b06a90;">logo</span></div>
+        <p style="margin:20px 0 0;font-size:14px;line-height:1.8;font-weight:300;color:#6d635c;max-width:34ch;">Clínica de estética avançada e harmonização facial.</p>
+      </div>
+      <div>
+        <p style="margin:0 0 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#a9865b;">Endereço</p>
+        <p style="margin:0;font-size:14px;line-height:1.9;font-weight:300;color:#6d635c;">Rua, número, sala<br>Bairro · Cidade/UF<br>CEP 00000-000</p>
+      </div>
+      <div>
+        <p style="margin:0 0 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#a9865b;">Atendimento</p>
+        <p style="margin:0;font-size:14px;line-height:1.9;font-weight:300;color:#6d635c;">Segunda a sexta · 09h às 19h<br>Sábado · 09h às 13h<br>Agendamento prévio</p>
+      </div>
+      <div>
+        <p style="margin:0 0 14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#a9865b;">Contato</p>
+        <div style="display:grid;gap:8px;font-size:14px;font-weight:300;">
+          <a href="{{ waLink }}" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="#">Instagram</a>
+          <a href="#">E-mail</a>
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;max-width:1280px;margin:clamp(36px,5vw,60px) auto 0;padding-top:24px;border-top:1px solid #e5dcd2;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px;letter-spacing:.08em;color:#8a8078;">
+      <span>Nome da clínica · Responsável técnica · Registro profissional</span>
+      <span>Resultados variam de acordo com cada paciente</span>
+    </div>
+  </footer>
+
+  <a href="{{ waLink }}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" style="position:fixed;right:clamp(16px,2.5vw,28px);bottom:clamp(16px,2.5vw,28px);z-index:60;display:flex;align-items:center;gap:12px;background:#25d366;color:#fff;padding:15px 18px;border-radius:999px;box-shadow:0 14px 34px rgba(18,140,70,.32);font-size:13px;letter-spacing:.1em;text-transform:uppercase;transition:transform .3s ease,background .3s ease,box-shadow .3s ease;" style-hover="background:#128c46;transform:translateY(-2px);box-shadow:0 18px 40px rgba(18,140,70,.4);">
+    <svg viewBox="0 0 32 32" style="flex:0 0 auto;width:26px;height:26px;fill:#fff;" aria-hidden="true"><path d="M16.02 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.46 1.73 6.4L3.2 28.8l6.56-1.71a12.75 12.75 0 0 0 6.26 1.63h.01c7.06 0 12.8-5.74 12.8-12.8 0-3.42-1.33-6.63-3.75-9.05a12.71 12.71 0 0 0-9.06-3.67Zm0 23.03h-.01c-1.9 0-3.77-.51-5.4-1.48l-.39-.23-4.02 1.05 1.07-3.92-.25-.4a10.61 10.61 0 0 1-1.63-5.67c0-5.87 4.78-10.64 10.65-10.64 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.11 7.53c0 5.87-4.78 10.64-10.65 10.64Zm5.84-7.97c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1.01 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.89-1.78-2.21-.19-.32-.02-.5.14-.66.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.54-.71-.55l-.61-.01c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.08 1.3 3.29c.16.21 2.24 3.42 5.43 4.79.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.89-.77 2.15-1.52.27-.75.27-1.38.19-1.52-.08-.13-.29-.21-.61-.37Z"></path></svg>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><span>{{ waLabel }}</span></sc-if>
+  </a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsappPhone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+55 (11) 90000-0000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;WhatsApp&quot;},&quot;whatsappMessage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Olá! Gostaria de agendar uma avaliação.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;WhatsApp&quot;},&quot;whatsappLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;WhatsApp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;WhatsApp&quot;}}">
+class Component extends DCLogic {
+  state = { pos: 50, open: 0, dragging: false, cols: 4, w: typeof window !== "undefined" ? window.innerWidth : 1280, menuOpen: false };
+
+  measure = () => {
+    const w = window.innerWidth;
+    const next = {};
+    if (w !== this.state.w) { next.w = w; if (w >= 900 && this.state.menuOpen) next.menuOpen = false; }
+    const el = this.grid;
+    if (el) {
+      const styles = getComputedStyle(el);
+      const gap = parseFloat(styles.columnGap) || 20;
+      const inner = el.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight);
+      const cols = w < 760 ? 6 : Math.max(1, Math.min(6, Math.floor((inner + gap) / (250 + gap))));
+      if (cols !== this.state.cols) next.cols = cols;
+    }
+    if (Object.keys(next).length) this.setState(next);
+  };
+
+  componentDidMount() {
+    this.measure();
+    this.ro = new ResizeObserver(this.measure);
+    if (this.grid) this.ro.observe(this.grid);
+    window.addEventListener("resize", this.measure);
+  }
+
+  componentWillUnmount() {
+    this.ro?.disconnect();
+    window.removeEventListener("resize", this.measure);
+  }
+
+  setPos = (clientX) => {
+    const el = this.ba;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const p = Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100));
+    this.setState({ pos: p });
+  };
+
+  renderVals() {
+    const pos = this.state.pos;
+    const rawPhone = this.props.whatsappPhone ?? "+55 (11) 90000-0000";
+    const digits = String(rawPhone).replace(/\D/g, "") || "5511900000000";
+    const msg = this.props.whatsappMessage ?? "Olá! Gostaria de agendar uma avaliação.";
+    const waLink = "https://wa.me/" + digits + "?text=" + encodeURIComponent(msg);
+    const waLabel = this.props.whatsappLabel ?? "WhatsApp";
+    const faqData = [
+      ["O procedimento dói?", "Utilizamos anestésicos tópicos e técnicas de aplicação que tornam o desconforto mínimo. A maioria das pacientes descreve apenas uma leve sensação de pressão."],
+      ["Quanto tempo dura o resultado?", "Depende do produto e do metabolismo individual. Toxina botulínica costuma durar de quatro a seis meses; preenchimentos e bioestimuladores têm duração mais longa, avaliada em cada retorno."],
+      ["Vou ficar com aparência artificial?", "Não. O planejamento parte das suas proporções naturais, com aplicação gradual e reavaliação antes de qualquer complemento."],
+      ["Preciso de afastamento das atividades?", "Na maior parte dos casos é possível retomar a rotina no mesmo dia, seguindo orientações simples de pós-procedimento."],
+      ["Como funciona a primeira consulta?", "É uma avaliação facial completa, com análise de proporções, histórico de saúde e definição de um plano por etapas sem obrigação de realizar o procedimento no mesmo dia."]
+    ];
+    const postData = [
+      ["limpeza de pele", "128 curtidas", "Antes da sessão"],
+      ["ambiente da clínica", "214 curtidas", "Consultório"],
+      ["retrato cliente", "341 curtidas", "Depoimento"],
+      ["antes e depois", "502 curtidas", "Resultado"],
+      ["equipe da clínica", "176 curtidas", "Equipe"],
+      ["detalhe do atendimento", "193 curtidas", "Bastidor"]
+    ];
+    const wide = this.state.w >= 900;
+    return {
+      waLink, waLabel,
+      wide, narrow: !wide,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      gridRef: (el) => { this.grid = el; },
+      posts: postData.slice(0, this.state.cols).map(([ph, likes, cap]) => ({ ph, likes, cap })),
+      posStr: pos + "%",
+      clipRight: (100 - pos) + "%",
+      baRef: (el) => { this.ba = el; },
+      onDown: (e) => { this.setState({ dragging: true }); e.currentTarget.setPointerCapture?.(e.pointerId); this.setPos(e.clientX); },
+      onMove: (e) => { if (this.state.dragging) this.setPos(e.clientX); },
+      onUp: () => this.setState({ dragging: false }),
+      onKey: (e) => {
+        if (e.key === "ArrowLeft") { e.preventDefault(); this.setState(s => ({ pos: Math.max(0, s.pos - 4) })); }
+        if (e.key === "ArrowRight") { e.preventDefault(); this.setState(s => ({ pos: Math.min(100, s.pos + 4) })); }
+      },
+      faqs: faqData.map(([q, a], i) => ({
+        q, a,
+        open: this.state.open === i,
+        rot: this.state.open === i ? "0deg" : "90deg",
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i }))
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

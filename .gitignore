@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+build
+.DS_Store
+*.pem
+npm-debug.log*
+.env*.local
+.vercel
+next-env.d.ts
+*.tsbuildinfo
+
+# Export original do Claude Design (conteudo ja extraido em design_handoff_landing_clinica/)
+*.zip
