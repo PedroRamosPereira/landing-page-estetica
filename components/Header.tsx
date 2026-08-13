@@ -46,7 +46,7 @@ export function Header() {
 
         <a
           href="#agendar"
-          className="hidden shrink-0 rounded-full bg-ink px-[22px] py-3 text-[13px] tracking-[0.1em] whitespace-nowrap text-cream uppercase transition-colors duration-300 hover:bg-gold nav:inline-block"
+          className="hidden shrink-0 rounded-full bg-ink px-[22px] py-3 text-[13px] tracking-[0.1em] whitespace-nowrap text-cream uppercase transition-colors duration-300 hover:bg-gold-dark nav:inline-block"
         >
           Agendar avaliação
         </a>
