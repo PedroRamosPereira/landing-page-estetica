@@ -40,7 +40,7 @@ export const clinica = {
   // Métricas exibidas abaixo do hero. Valores de demonstração.
   numeros: [
     { valor: "+12", rotulo: "anos de atuação" },
-    { valor: "+4.000", rotulo: "procedimentos" },
+    { contagemAte: 4000, rotulo: "procedimentos" },
     { valor: "5.0", rotulo: "avaliação pacientes" },
   ],
 } as const;

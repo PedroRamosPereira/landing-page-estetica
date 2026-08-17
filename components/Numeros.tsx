@@ -1,4 +1,5 @@
 import { clinica } from "@/config/clinica";
+import { CountUpNumber } from "@/components/CountUpNumber";
 import { Reveal } from "@/components/Reveal";
 
 /**
@@ -11,7 +12,13 @@ export function Numeros() {
       <Reveal className="mx-auto flex w-full max-w-[1280px] flex-wrap gap-x-[clamp(28px,6vw,88px)] gap-y-6">
         {clinica.numeros.map((n) => (
           <div key={n.rotulo}>
-            <p className="font-serif text-[32px] leading-none font-normal">{n.valor}</p>
+            <p className="font-serif text-[32px] leading-none font-normal">
+              {"contagemAte" in n ? (
+                <CountUpNumber target={n.contagemAte} duration={1200} />
+              ) : (
+                n.valor
+              )}
+            </p>
             <p className="mt-[6px] text-[12px] tracking-[0.14em] text-faint uppercase">{n.rotulo}</p>
           </div>
         ))}
