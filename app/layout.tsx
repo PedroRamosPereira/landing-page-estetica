@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
+import { WhatsappFloat } from "@/components/WhatsappFloat";
 import { clinica } from "@/config/clinica";
 import "./globals.css";
 
@@ -37,7 +38,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${jost.variable}`}>
-      <body className="overflow-x-clip">{children}</body>
+      <body className="overflow-x-clip">
+        {children}
+        <WhatsappFloat />
+      </body>
     </html>
   );
 }

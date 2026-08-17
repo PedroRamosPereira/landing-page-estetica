@@ -8,7 +8,6 @@ import { Numeros } from "@/components/Numeros";
 import { Procedimentos } from "@/components/Procedimentos";
 import { Resultados } from "@/components/Resultados";
 import { Sobre } from "@/components/Sobre";
-import { WhatsappFloat } from "@/components/WhatsappFloat";
 
 export default function Page() {
   return (
@@ -25,7 +24,6 @@ export default function Page() {
         <Agendar />
       </main>
       <Footer />
-      <WhatsappFloat />
     </div>
   );
 }

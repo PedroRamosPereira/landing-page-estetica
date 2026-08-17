@@ -145,3 +145,20 @@
   text-transform: uppercase;
   color: var(--color-gold-deep);
 }
+
+.whatsapp-float {
+  transition:
+    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 220ms ease-out,
+    background-color 200ms ease-out,
+    box-shadow 200ms ease-out;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float {
+    transform: none !important;
+    transition-property: opacity !important;
+    transition-duration: 220ms !important;
+  }
+}
