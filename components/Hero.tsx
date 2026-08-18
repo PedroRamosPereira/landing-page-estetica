@@ -46,7 +46,7 @@ export function Hero() {
               style={{ objectPosition: clinicPhotos.hero.objectPosition }}
             />
           </div>
-          <div className="absolute bottom-5 left-5 max-w-[min(224px,64%)] rounded-[3px] border border-line bg-cream px-5 py-4 shadow-[0_18px_40px_-28px_rgba(33,28,25,.6)] md:-left-6">
+          <div className="absolute right-5 bottom-5 max-w-[min(224px,64%)] rounded-[3px] border border-line bg-cream px-5 py-4 shadow-[0_18px_40px_-28px_rgba(33,28,25,.6)] md:-right-6">
             <p className="font-serif text-xl leading-[1.3] font-normal">Avaliação facial completa</p>
             <p className="mt-[6px] text-[12px] tracking-[0.1em] text-gold-deep uppercase">
               Sem compromisso
