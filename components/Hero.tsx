@@ -1,4 +1,5 @@
-import { Placeholder } from "@/components/Placeholder";
+import Image from "next/image";
+import { clinicPhotos } from "@/config/photos";
 import { Reveal } from "@/components/Reveal";
 
 export function Hero() {
@@ -34,10 +35,17 @@ export function Hero() {
         </Reveal>
 
         <Reveal immediate delay={0.12} className="relative">
-          <Placeholder
-            label="imagem principal"
-            className="aspect-4/5 max-h-[560px] w-full rounded-[3px] shadow-[0_30px_70px_-40px_rgba(33,28,25,.5)]"
-          />
+          <div className="relative aspect-4/5 max-h-[560px] w-full overflow-hidden rounded-[3px] shadow-[0_30px_70px_-40px_rgba(33,28,25,.5)]">
+            <Image
+              src={clinicPhotos.hero.src}
+              alt={clinicPhotos.hero.alt}
+              fill
+              preload
+              sizes="(max-width: 767px) calc(100vw - 36px), (max-width: 1280px) 47vw, 604px"
+              className="object-cover"
+              style={{ objectPosition: clinicPhotos.hero.objectPosition }}
+            />
+          </div>
           <div className="absolute bottom-5 left-5 max-w-[min(224px,64%)] rounded-[3px] border border-line bg-cream px-5 py-4 shadow-[0_18px_40px_-28px_rgba(33,28,25,.6)] md:-left-6">
             <p className="font-serif text-xl leading-[1.3] font-normal">Avaliação facial completa</p>
             <p className="mt-[6px] text-[12px] tracking-[0.1em] text-gold-deep uppercase">

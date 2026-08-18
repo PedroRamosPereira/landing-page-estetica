@@ -3,12 +3,13 @@
 import { CaretLeft, CaretRight, ChatCircle, Heart } from "@phosphor-icons/react/dist/ssr";
 import { useLayoutEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import { selectInertialTarget } from "@/components/carousel-physics";
+import Image from "next/image";
 import { clinica } from "@/config/clinica";
-import { Placeholder } from "@/components/Placeholder";
+import { clinicPhotos } from "@/config/photos";
 import { Reveal } from "@/components/Reveal";
 
 type Post = {
-  ph: string;
+  image: (typeof clinicPhotos.posts)[number];
   likes: string;
   cap: string;
   url?: string;
@@ -19,12 +20,12 @@ const VELOCITY_WINDOW_MS = 100;
 
 // Conteúdo de demonstração. Substituir por posts reais ou por um feed.
 const posts: Post[] = [
-  { ph: "limpeza de pele", likes: "128", cap: "Antes da sessão", url: undefined },
-  { ph: "ambiente da clínica", likes: "214", cap: "Consultório", url: undefined },
-  { ph: "retrato paciente", likes: "341", cap: "Depoimento", url: undefined },
-  { ph: "antes e depois", likes: "502", cap: "Resultado", url: undefined },
-  { ph: "equipe da clínica", likes: "176", cap: "Equipe", url: undefined },
-  { ph: "detalhe do atendimento", likes: "193", cap: "Bastidor", url: undefined },
+  { image: clinicPhotos.posts[0], likes: "128", cap: "Antes da sessão", url: undefined },
+  { image: clinicPhotos.posts[1], likes: "214", cap: "Consultório", url: undefined },
+  { image: clinicPhotos.posts[2], likes: "341", cap: "Depoimento", url: undefined },
+  { image: clinicPhotos.posts[3], likes: "502", cap: "Resultado", url: undefined },
+  { image: clinicPhotos.posts[4], likes: "176", cap: "Equipe", url: undefined },
+  { image: clinicPhotos.posts[5], likes: "193", cap: "Bastidor", url: undefined },
 ];
 
 export function Bastidores() {
@@ -573,7 +574,17 @@ function PostContent({ post }: { post: Post }) {
         </span>
       </div>
 
-      <Placeholder label={post.ph} className="aspect-square w-full" />
+      <div className="relative aspect-square w-full overflow-hidden">
+        <Image
+          src={post.image.src}
+          alt={post.image.alt}
+          fill
+          draggable={false}
+          sizes="(max-width: 768px) 74vw, 260px"
+          className="pointer-events-none object-cover"
+          style={{ objectPosition: post.image.objectPosition }}
+        />
+      </div>
 
       <figcaption className="grid gap-[6px] px-[14px] pt-3 pb-4">
         <div className="flex items-center gap-3 text-ink">

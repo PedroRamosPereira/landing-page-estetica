@@ -47,18 +47,18 @@ CTA final, o botão flutuante e o link do rodapé.
 Textos de seção (procedimentos, FAQ, posts) ficam nos respectivos componentes
 em `components/`.
 
-## Fotos que faltam
+## Fotografias de demonstração
 
-A página usa blocos `<Placeholder>` no lugar das fotos. Ao integrar, trocar
-cada um por `next/image` mantendo o mesmo `aspect-ratio`:
+As fotos são assets de demonstração do Pexels, já otimizados em WebP:
 
-| Onde | Componente | Proporção |
-| --- | --- | --- |
-| Hero, imagem principal | `Hero.tsx` | 4:5 |
-| Sobre, foto da profissional | `Sobre.tsx` | 3:4 |
-| Resultados, foto "antes" | `Resultados.tsx` | preenche o box 16:11 |
-| Resultados, foto "depois" | `Resultados.tsx` | preenche o box 16:11 |
-| Bastidores, 6 posts | `Bastidores.tsx` | 1:1 |
+- arquivos: `public/images/clinic/`;
+- caminhos, textos alternativos, pontos focais e créditos: `config/photos.ts`;
+- créditos em formato legível: `docs/image-credits.md`.
+
+O comparador de resultados usa duas derivações da mesma fotografia e declara
+isso na interface. Todas as fotos devem ser substituídas por material próprio da
+clínica antes de adaptar a demo para um cliente real. O componente
+`Placeholder` continua no projeto como fallback para novas seções.
 
 ## Decisões que se afastam do protótipo
 
