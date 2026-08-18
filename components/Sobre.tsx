@@ -1,6 +1,7 @@
 import { Check } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 import { clinica } from "@/config/clinica";
-import { Placeholder } from "@/components/Placeholder";
+import { clinicPhotos } from "@/config/photos";
 import { Reveal } from "@/components/Reveal";
 
 const pilares = [
@@ -17,10 +18,16 @@ export function Sobre() {
     >
       <div className="mx-auto grid w-full max-w-[1280px] items-center gap-[clamp(32px,5vw,80px)] md:grid-cols-2">
         <Reveal>
-          <Placeholder
-            label="foto perfil"
-            className="aspect-3/4 max-h-[560px] w-full rounded-[3px]"
-          />
+          <div className="relative aspect-3/4 max-h-[560px] w-full overflow-hidden rounded-[3px]">
+            <Image
+              src={clinicPhotos.professional.src}
+              alt={clinicPhotos.professional.alt}
+              fill
+              sizes="(max-width: 767px) calc(100vw - 36px), (max-width: 1280px) 47vw, 600px"
+              className="object-cover"
+              style={{ objectPosition: clinicPhotos.professional.objectPosition }}
+            />
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>

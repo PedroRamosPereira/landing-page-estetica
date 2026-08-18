@@ -2,7 +2,8 @@
 
 import { useCallback, useRef, useState } from "react";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react/dist/ssr";
-import { Placeholder } from "@/components/Placeholder";
+import Image from "next/image";
+import { clinicPhotos } from "@/config/photos";
 import { Reveal } from "@/components/Reveal";
 
 /**
@@ -41,8 +42,8 @@ export function Resultados() {
             Arraste e veja a transformação
           </h2>
           <p className="mt-5 text-base leading-[1.75] font-light text-muted">
-            Registros reais, mesma iluminação e mesmo enquadramento. Resultados variam conforme
-            indicação e resposta individual.
+            Simulação visual criada a partir da mesma fotografia para demonstrar o comparador. Não
+            representa resultado clínico.
           </p>
         </Reveal>
 
@@ -61,11 +62,31 @@ export function Resultados() {
           >
             {/* Slots de foto: camada "depois" cheia, camada "antes" recortada
                 pela posição da divisória. As pílulas abaixo é que rotulam. */}
-            <div className="absolute inset-0">
-              <Placeholder tone="stone" className="size-full" />
+            <div className="absolute inset-0" role="img" aria-label={clinicPhotos.comparison.alt}>
+              <Image
+                src={clinicPhotos.comparison.after.src}
+                alt={clinicPhotos.comparison.after.alt}
+                fill
+                draggable={false}
+                sizes="(max-width: 1080px) calc(100vw - 36px), 1080px"
+                className="pointer-events-none object-cover"
+                style={{ objectPosition: clinicPhotos.comparison.objectPosition }}
+              />
             </div>
-            <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-              <Placeholder className="size-full" />
+            <div
+              className="absolute inset-0"
+              style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+              aria-hidden="true"
+            >
+              <Image
+                src={clinicPhotos.comparison.before.src}
+                alt={clinicPhotos.comparison.before.alt}
+                fill
+                draggable={false}
+                sizes="(max-width: 1080px) calc(100vw - 36px), 1080px"
+                className="pointer-events-none object-cover"
+                style={{ objectPosition: clinicPhotos.comparison.objectPosition }}
+              />
             </div>
 
             <span className="absolute top-[18px] left-[18px] rounded-full bg-cream/90 px-[14px] py-[7px] text-[11px] tracking-[0.16em] text-ink uppercase">
